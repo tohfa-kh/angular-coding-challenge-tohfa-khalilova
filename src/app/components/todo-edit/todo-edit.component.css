@@ -1,0 +1,15 @@
+.error-text {
+  color: #ff0000;
+  font-size: 14px;
+  text-align: center;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid #ff0000;
+}
+
+input:focus,
+input:active {
+  border-color: transparent !important;
+  border-bottom: 2px solid #1c87c9 !important;
+}

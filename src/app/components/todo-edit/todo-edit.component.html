@@ -1,0 +1,26 @@
+<form
+  class="form-inline"
+  #todoForm="ngForm"
+  (ngSubmit)="sendTodoToList(todoForm)"
+>
+  <div class="input-group">
+    <div
+      [ngClass]="
+        !isTextValid ? 'd-flex flex-column justify-content-between' : ''
+      "
+    >
+      <input
+        #editedText="ngModel"
+        minlength="2"
+        type="text"
+        class="form-control shadow-sm"
+        [ngClass]="!isTextValid ? 'input-error' : 'input-t'"
+        name="editedText"
+        [ngModel]="selectedTodo.text"
+      />
+      <div class="error-text mt-2" *ngIf="editedText?.errors?.['minlength']">
+        Text must be at least 2 characters long.
+      </div>
+    </div>
+  </div>
+</form>

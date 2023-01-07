@@ -1,0 +1,27 @@
+<div [ngClass]="todo.checked ? 'todo done' : 'todo'">
+  <button class="status" (click)="mark()"></button>
+  <div class="d-flex flex-row justify-content-between">
+    <div *ngIf="!editMode" class="d-flex align-items-center">
+      {{ todo.text }}
+    </div>
+    <div *ngIf="editMode" class="d-flex align-items-center">
+      <app-todo-edit
+        [selectedTodo]="todo"
+        (sendTodoToListEvent)="getEditedText($event)"
+      ></app-todo-edit>
+    </div>
+    <div>
+      <button
+        *ngIf="!editMode && !this.todo.checked"
+        class="edit"
+        (click)="edit()"
+      ></button>
+      <button
+        *ngIf="editMode"
+        class="cancel mt-1"
+        (click)="cancelEdit()"
+      ></button>
+      <button class="remove" (click)="remove()"></button>
+    </div>
+  </div>
+</div>

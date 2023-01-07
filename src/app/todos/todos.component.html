@@ -1,0 +1,27 @@
+<div class="todos">
+  <form class="newTodo" (submit)="$event.preventDefault()">
+    <input
+      name="text"
+      aria-label="Add todo"
+      placeholder="+ tap to add a todo"
+      #input
+      (keyup.enter)="onSubmit(input.value); input.value = ''"
+    />
+  </form>
+  <div *ngIf="!todos.length" class="d-block text-center mt-3">
+    <span class="pe-aut text-sizing"
+      >There aren't any todos. Why don't you
+      <a href="#" (click)="$event.preventDefault(); focus()">create one</a>
+      ?</span
+    >
+  </div>
+  <div *ngFor="let todo of todos; index as i">
+    <app-todo
+      [todo]="todo"
+      [index]="i"
+      (markTodoEvent)="updateMarkState($event)"
+      (editTextEvent)="updateTodoText($event)"
+      (deleteTodoEvent)="deleteTodo($event)"
+    ></app-todo>
+  </div>
+</div>
