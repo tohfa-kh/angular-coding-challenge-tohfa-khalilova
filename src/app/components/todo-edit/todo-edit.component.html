@@ -10,6 +10,7 @@
       "
     >
       <input
+        required
         #editedText="ngModel"
         minlength="2"
         type="text"
@@ -20,6 +21,9 @@
       />
       <div class="error-text mt-2" *ngIf="editedText?.errors?.['minlength']">
         Text must be at least 2 characters long.
+      </div>
+      <div class="error-text mt-2" *ngIf="editedText?.errors?.['required']">
+        Please enter todo text.
       </div>
     </div>
   </div>
